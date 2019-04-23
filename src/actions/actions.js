@@ -2,7 +2,7 @@ import types from '../types/types';
 
 let i=0;
 
-const addTask =( id, text )=> ({
+const addTask =( text )=> ({
     type: types.ADD_TASK,
     payload:{
         id:i++, 
@@ -25,7 +25,7 @@ const removeTask = (id) =>({
 })
 
 const removeAll =({
-    type: types.REMOVE_ALL,
+    type: types.REMOVE_ALL
 
 })
 
@@ -35,3 +35,19 @@ export default{
     removeTask,
     removeAll
 }
+
+//wywołanie w konsoli redux action
+// ({
+//     type: 'ADD_TASK',
+//     payload:{
+//         id:4, 
+//         text:'text' 
+//     }
+// })
+
+// ({
+//     type: 'REMOVE_TASK',
+//     payload: {
+//         id:4
+//     }
+// })
