@@ -1,0 +1,11 @@
+const REMOVE_ALL='REMOVE_ALL';
+const REMOVE_TASK='REMOVE_TASK';
+const ADD_TASK='ADD_TASK';
+const TASK_DONE='TASK_DONE';
+
+export default{
+    REMOVE_ALL,
+    REMOVE_TASK,
+    ADD_TASK,
+    TASK_DONE
+}
