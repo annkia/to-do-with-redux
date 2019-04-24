@@ -26,12 +26,39 @@ import { connect } from  'react-redux';
 //         );
 //     }
 // }
-
-const List = (props) =>  
-    <ul>
-        {props.tasks.length}
-    </ul>
-
+//{props.tasks.length}
+// const List = (tasks) => ( 
+//     <div>
+//         <ul>
+//             {tasks.map((task)=>(
+//                 <li key={task.id}>
+//                 {task.id}:{task.text}
+//                 </li>
+//             ))}
+//         </ul>
+//     </div>
+// );
 const mapStateToProps = state => ({tasks:state.tasks});
 
+
+const List = ({ tasks }) => (
+	<div>
+		<ul>
+			{tasks.map((task) => (
+				<li key={task.id}>
+					{task.id}:{task.text}
+				</li>
+			))}
+		</ul>
+	</div>
+);
+
+//za pomocą funkcji connect uzyskujemy dostęp do stanu, gdzie przechowujemy zadania z id
+//connect przyjmuje 2 parametry: 1. obiekt, tu - stałą mapStateToProps w której mapujemy elementy ze stora na propsy
+//2. akcje - może zostać puste
 export default connect(mapStateToProps, {})(List);
+
+//Jako drugi argument przekazany do connect, to mapDispatchToProps służy do wysyłania akcji do stora.
+
+//dispatch jest funkcją stora Redux. Wywołujesz store.dispatch, aby wywołać akcję. To jedyny sposób na wywołanie zmiany stanu.
+//mapDispatchToProps == mapDispatch

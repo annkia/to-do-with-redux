@@ -1,7 +1,7 @@
 import types from '../types/types';
 
 export const toDo={
-    tasks:['Umyć okna', 'Zakupy', 'Pranie', 'Upiec ciasto']
+    tasks:[]
   }
 
 function taskReducer (state=toDo, action){
