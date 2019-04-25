@@ -1,6 +1,10 @@
 import React from 'react';
 import './List.scss';
 import { connect } from  'react-redux';
+import   addTask  from '../actions/actions';
+import   removeTask  from '../actions/actions';
+
+
 
 
 
@@ -40,23 +44,34 @@ import { connect } from  'react-redux';
 // );
 const mapStateToProps = state => ({tasks:state.tasks});
 
+const mapDispatchToProps = dispatch =>({
+    addTask:text=>{
+        dispatch(addTask(text));
+    },
+    removeTask:id=>{
+        dispatch(removeTask(id));
+    }
+})
+
 
 const List = ({ tasks }) => (
 	<div>
 		<ul>
 			{tasks.map((task) => (
 				<li key={task.id}>
-					{task.id}:{task.text}
+                    {task.id}:{task.text}
+                    <button onClick={()=>removeTask(task.id)}>Remove </button>
 				</li>
 			))}
 		</ul>
+		<button onClick={() => addTask('test', 'test')}>Add</button>
 	</div>
 );
 
 //za pomocą funkcji connect uzyskujemy dostęp do stanu, gdzie przechowujemy zadania z id
 //connect przyjmuje 2 parametry: 1. obiekt, tu - stałą mapStateToProps w której mapujemy elementy ze stora na propsy
 //2. akcje - może zostać puste
-export default connect(mapStateToProps, {})(List);
+export default connect(mapStateToProps, mapDispatchToProps)(List);
 
 //Jako drugi argument przekazany do connect, to mapDispatchToProps służy do wysyłania akcji do stora.
 
